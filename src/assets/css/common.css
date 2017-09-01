@@ -17,22 +17,6 @@ body {
     line-height: 1.42857;
     background-color: #f1efef;
     color:#2c3e50;
-    position: fixed;
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-    max-width: 100%;
-}
-#app{
-  left: 0;
-  top: 0;
-  position: absolute;
-  overflow: auto;
-  z-index: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
 }
 ol,ul {
     list-style: none;
@@ -152,4 +136,36 @@ pre code {
 }
 .container:after {
     clear: both;
+}
+
+#app:before{
+    content: '';
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+
+    background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
+    
+}
+.index_center{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+     overflow:auto;
+    -webkit-overflow-scrolling: touch;
+} 
+
+
+.index_time{
+    
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
 }
