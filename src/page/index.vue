@@ -62,6 +62,7 @@
 <script>
     import moment from 'moment-timezone'
     export default {
+        name:'index',
         data(){
             return {
                 hour: '',

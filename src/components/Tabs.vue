@@ -1,10 +1,10 @@
 <template>
-    <div class="sheep-palette-button pb" :class="{ 'expand': expanded, 'mint-palette-button-active': transforming }" @animationend="onMainAnimationEnd" @webkitAnimationEnd="onMainAnimationEnd" @mozAnimationEnd="onMainAnimationEnd">
+    <div class="sheep-palette-button pb" :class="{ 'expand': expanded, 'sheep-palette-button-active': transforming }" @animationend="onMainAnimationEnd" @webkitAnimationEnd="onMainAnimationEnd" @mozAnimationEnd="onMainAnimationEnd">
         <div class="sheep-sub-button-container">
-            <div class="my-icon-button palette-button-sub-0" ></div>
-            <div class="my-icon-button palette-button-sub-1"></div>
-            <div class="my-icon-button palette-button-sub-2"></div>
-            <div class="my-icon-button palette-button-sub-3"></div>
+            <div class="my-icon-button palette-button-sub-0"  ><router-link to="/"  @click.native="toggle" >1</router-link></div>
+            <div class="my-icon-button palette-button-sub-1"  ><router-link  to="/dairy" @click.native="toggle"  >2</router-link></div>
+            <div class="my-icon-button palette-button-sub-2"  @touchstart="toggle">3</div>
+            <div class="my-icon-button palette-button-sub-3"  @touchstart="toggle">4</div>
         </div>
         <div class="sheep-main-button" @touchstart="toggle">+</div>
     </div >
@@ -72,7 +72,7 @@ export default {
     line-height: 30px;
     text-align: center;
 }
-.mint-sub-button-container>* {
+.sheep-sub-button-container>* {
     position: absolute;
     top: 15px;
     left: 15px;
@@ -82,7 +82,7 @@ export default {
     transition: -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out;
 }
-.mint-palette-button-active{
+.sheep-palette-button-active{
     animation: mint-zoom 0.5s ease-in-out;
 }
 @keyframes mint-zoom{
@@ -119,7 +119,6 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: blue;
     font-size: 2em;
     
 }
@@ -130,7 +129,8 @@ export default {
     color: #fff;
     position: absolute;
     bottom: 30px;
-    right:30px
+    right:30px;
+    z-index:100
 }
 
 </style>

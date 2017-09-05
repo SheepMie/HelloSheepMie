@@ -11,12 +11,22 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+html{
+    height: 100%;
+}
 body {
     font-family: Microsoft Yahei , Arial;
     font-size: 14px;
     line-height: 1.42857;
     background-color: #f1efef;
     color:#2c3e50;
+    height: 100%;
+}
+#app{
+    height: 100%;
+}
+.fullheight{
+    height: 100%;
 }
 ol,ul {
     list-style: none;
