@@ -1,37 +1,51 @@
 <template>
     <div>
-        <table>
-            <tr v-for = 'data in scrollData'>
-                <td  :colspan="data.col" :rowspan='data.row' >
-                    <div>
-                    123
-                    </div>
-                </td>
-                <td  :colspan="data.col" :rowspan='data.row' >
-                    <div>
-                    123
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                    123
-                    </div>
-                </td>
-                <td  rowspan="2">
-                    <div>
-                    222
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                
-            </tr>
-        </table>
+        <div class="oflow boxstyle1">
+            <span class="fl pd5 col-xs-6 boxheight1">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+            <span class="fr pd5 col-xs-6 boxheight1">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div>
+        <div class="oflow boxstyle2">
+            <span class="fl pd5 col-xs-6 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+            <span class="fr pd5 col-xs-6 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div>
+        <!-- <div class="oflow boxstyle3">
+            <span class="fl pd5 col-xs-6 boxheight1">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+            <span class="fr pd5 col-xs-6 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div>
+        <div class="oflow boxstyle4">
+            <span class="fl pd5 col-xs-6 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+            <span class="fr pd5 col-xs-6 boxheight1">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div> -->
+        <div class="oflow boxstyle3">
+            <span class="fl pd5 col-xs-12 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div>
+        <div class="oflow boxstyle3">
+            <span class="fl pd5 col-xs-12 boxheight2">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+            <span class="fr pd5 col-xs-6 boxheight1">
+                <li :style="{backgroundColor: '#'+addcolor}">123</li>
+            </span>
+        </div>
     </div>
 </template>
 
@@ -40,25 +54,31 @@ export default {
   name: 'sheep-dairy-scroller',
   data () {
     return {
-        scrollData:[
-            {col:2,row:1},
-            {col:1,row:2},
-            {col:1,row:1},
-            {col:1,row:1},
-            
+        color:[
+            'f4b300','78ba00','2673ec','ae113d','632f00','b01e00','4e0038','c1004f','7200ac','2d004e','006ac1','001e4e','008287','004d60','004a00','00c13f','15992a','ff981d','e56c19','b81b1b','ff1d77','b81b6c','aa40ff','691bb8','1faeff','1b58b8','56c5ff','569ce3','00d8cc','00aaaa','91d100','b81b6c','e1b700','d39d09','ff76bc','e064b7','00a4a4','ff7d23','4cafb5','044d91','832772','d15a44','de971b','017802','6e2ea0'
         ],
-        transforming: false,    // 是否正在执行动画
-        expanded: false           // 是否已经展开子按钮
+        
     }
   },
-  methods: {
-      
+  computed: {
+    // a computed getter
+    addcolor: function () {
+      return this.color[(this.color.length * Math.random())>>0]
+    }
   },
+  mounted(){
+
+  },
+  methods: {
+    plus() {
+    }   
+  },
+  
 }
 </script>
 
 <style>
-table{table-layout: fixed;width:100%;padding:3px}
-td{width: 50%;height:150px;overflow: hidden; padding:3px;} 
-td div{width:100%;height:100%;background: #0ff;overflow: hidden;}
+.boxheight1{height: 150px;}
+.boxheight2{height: 300px;}
+.oflow span li{width: 100%;height: 100%;}
 </style>
