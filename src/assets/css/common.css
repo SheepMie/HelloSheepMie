@@ -11,17 +11,16 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+html{
+    height: 100%;
+}
 body {
     font-family: Microsoft Yahei , Arial;
     font-size: 14px;
     line-height: 1.42857;
     background-color: #f1efef;
     color:#2c3e50;
-    position: fixed;
     height: 100%;
-    overflow: hidden;
-    width: 100%;
-    max-width: 100%;
 }
 
 #app{
@@ -34,7 +33,11 @@ body {
   height: 100%;
   background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
 }
-ol,ul {
+
+.fullheight{
+    height: 100%;
+}
+ol,ul ,li{
     list-style: none;
 }
 a {
@@ -152,4 +155,99 @@ pre code {
 }
 .container:after {
     clear: both;
+}
+
+#app:before{
+    content: '';
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+
+    background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
+    
+}
+.index_center{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+     overflow:auto;
+    -webkit-overflow-scrolling: touch;
+} 
+
+
+.index_time{
+    
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+}
+
+.fl{float: left;}
+.fr{float: right;}
+.pd1{padding: 1px;}
+.pd2{padding: 2px;}
+.pd5{padding: 5px;}
+.pd8{padding: 8px;}
+.pd10{padding: 10px;}
+
+.md1{margin: 1px;}
+.md2{margin: 2px;}
+.md5{margin: 5px;}
+.md8{margin: 8px;}
+.md10{margin: 10px;}
+.oflow{overflow: hidden;}
+
+.col-xs-1 {
+    width: 8.33333%;
+}
+
+.col-xs-2 {
+    width: 16.66667%;
+}
+
+.col-xs-3 {
+    width: 25%;
+}
+
+.col-xs-4 {
+    width: 33.33333%;
+}
+
+.col-xs-5 {
+    width: 41.66667%;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+.col-xs-7 {
+    width: 58.33333%;
+}
+
+.col-xs-8 {
+    width: 66.66667%;
+}
+
+.col-xs-9 {
+    width: 75%;
+}
+
+.col-xs-10 {
+    width: 83.33333%;
+}
+
+.col-xs-11 {
+    width: 91.66667%;
+}
+
+.col-xs-12 {
+    width: 100%;
 }
