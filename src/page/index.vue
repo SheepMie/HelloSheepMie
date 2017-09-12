@@ -5,7 +5,7 @@
                 <p>故事的小黄花</p>
 
 <p>从出生那年就飘着</p>
-<input type="text" @click="aabb">
+<input type="text" >
 <p>童年的荡秋千</p>
 
 <p>随记忆一直晃到现在</p>
@@ -60,7 +60,6 @@
 </template>
 
 <script>
-    import moment from 'moment-timezone'
     export default {
         name:'index',
         data(){
@@ -73,45 +72,7 @@
                 toggleTime: true
             }
         },
-        mounted(){
-            const localToggle = localStorage.getItem('indexToggle');
-            if(localToggle) this.toggle = true;
-            this.getTime();
-            this.startTime = setInterval(this.getTime,500)
-        },
-        methods: {
-            getTime(){
-                const site = this.toggle? "Europe/London":"Asia/Shanghai";
-                var today = moment().tz(site);
-                var h = today.format('H');
-                var m = today.format('m');
-                var s = today.format('s');
-                h = this.checkTime(h);
-                m = this.checkTime(m);
-                s = this.checkTime(s);
-                this.hour = h;
-                this.minute = m;
-                this.secondDecade.pop();
-                this.secondDecade.push(s.toString()[0]);
-                this.secondUnit.pop();
-                this.secondUnit.push(s.toString()[1])
-            },
-            checkTime(i){
-                if (i < 10) {
-                    i = "0" + i
-                }
-                return i
-            },
-            move(){
-                this.toggle = !this.toggle;
-                this.toggle? localStorage.setItem('indexToggle',"1"):localStorage.removeItem('indexToggle');
-            },
-            aabb(){
-                this.toggle = !this.toggle;
-            }
-        },
-        beforeDestroy () {
-            clearInterval(this.startTime);
-        }
+        
+        
     }
 </script>
