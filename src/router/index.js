@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 
 import index from '@/page/index'
+import dairylist from '@/page/dairylist'
 import dairy from '@/page/dairy'
 
 Vue.use(Router)
@@ -15,9 +16,12 @@ export default new Router({
       component: index
     },
     {
-      path: '/dairy',
-      name: 'dairy',
-      component: dairy
+      path: '/dairylist',
+      name: 'dairylist',
+      component: dairylist,
+      children:[
+        {path:'dairy',name: 'dairy',component:dairy}
+      ]
     }
   ]
 })

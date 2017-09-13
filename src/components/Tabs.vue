@@ -2,7 +2,7 @@
     <div class="sheep-palette-button pb" :class="{ 'expand': expanded, 'sheep-palette-button-active': transforming }" @animationend="onMainAnimationEnd" @webkitAnimationEnd="onMainAnimationEnd" @mozAnimationEnd="onMainAnimationEnd">
         <div class="sheep-sub-button-container">
             <div class="my-icon-button palette-button-sub-0"  ><router-link to="/"  @click.native="toggle" >1</router-link></div>
-            <div class="my-icon-button palette-button-sub-1"  ><router-link  to="/dairy" @click.native="toggle"  >2</router-link></div>
+            <div class="my-icon-button palette-button-sub-1"  ><router-link  to="/dairylist" @click.native="toggle"  >2</router-link></div>
             <div class="my-icon-button palette-button-sub-2"  @touchstart="toggle">3</div>
             <div class="my-icon-button palette-button-sub-3"  @touchstart="toggle">4</div>
         </div>

@@ -24,6 +24,7 @@ body {
 }
 
 #app{
+    position: fixed;
   left: 0;
   top: 0;
   overflow: auto;
@@ -36,6 +37,7 @@ body {
 
 .fullheight{
     height: 100%;
+    width: 100%;
 }
 ol,ul ,li{
     list-style: none;
@@ -149,15 +151,15 @@ pre code {
     padding-left: 15px;
     padding-right: 15px;
 }
-.container:before, .container:after {
+/* .container:before, .container:after {
     content: " ";
     display: table;
-}
+} */
 .container:after {
     clear: both;
 }
 
-#app:before{
+/* #app:before{
     content: '';
     position: fixed;
     top:0;
@@ -167,8 +169,8 @@ pre code {
 
     background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
     
-}
-.index_center{
+} */
+/* .index_center{
     position: absolute;
     top: 0;
     right: 0;
@@ -179,15 +181,15 @@ pre code {
     z-index: 1;
      overflow:auto;
     -webkit-overflow-scrolling: touch;
-} 
+}  */
 
 
-.index_time{
+/* .index_time{
     
     display: table-cell;
     vertical-align: middle;
     position: relative;
-}
+} */
 
 .fl{float: left;}
 .fr{float: right;}
