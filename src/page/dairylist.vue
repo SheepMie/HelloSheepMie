@@ -48,18 +48,12 @@
 .slide{left:100%;}
 .slide-active{transform: scale(1);}
 .fixed{position: absolute;top:0;width:100%;height: 100%;background:#fff;} */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
-  opacity: 1
-}
+
 </style>
 
 <template>
     <div class="fullheight oflow">
         <pull-to>
-            <transition name="fade">
             <div class="fullheight oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl pd5 " :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
@@ -67,7 +61,6 @@
                     </li>
                 </transition-group>
             </div> 
-            </transition>
         </pull-to>
         <transition name="slide-fade">
             <router-view></router-view>
@@ -100,9 +93,14 @@
           },
         watch:{
             $route(to, from){
-                console.log(to);
-                console.log(from);
-
+                let vm = this;
+                if(this.isdairydetail&&from.name == 'dairy'){
+                    setTimeout(function () {
+                        vm.isdairydetail = false
+                    }, 500)
+                    
+                }
+                 
             }
         },
         methods: { 
