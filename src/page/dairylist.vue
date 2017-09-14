@@ -24,7 +24,7 @@
 }
 /* 出去终点 */
 .fade-leave-active{
-  opacity: 0.9;
+  opacity: 0;
   transform: scale(0.85);
   
 }
@@ -95,9 +95,7 @@
             $route(to, from){
                 let vm = this;
                 if(this.isdairydetail&&from.name == 'dairy'){
-                    setTimeout(function () {
                         vm.isdairydetail = false
-                    }, 500)
                     
                 }
                  
@@ -117,10 +115,8 @@
             lookdairy (){
                 var vm = this;
                 vm.isdairydetail = true;
-                setTimeout(function () {
                     vm.isdairyshow = true;
                     vm.$router.push('/dairylist/dairy')
-                }, 500)
             },
             beforeEnter (el) {
                 el.style.opacity = 0;
