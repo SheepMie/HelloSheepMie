@@ -35,29 +35,24 @@
 .slide-fade-enter, .slide-fade-leave-to {
   transform: translateX(100%);
 }
-/* .slide {
-    left:100%;
-    transition:left 0.5s;
-    -moz-transition:left 0.5s; 
-    -webkit-transition:left 0.5s; 
-    -o-transition:left 0.5s; 
+
+.weather_icon{
+    right: 5px;
+    bottom:0px;
+    font-size:40px;
+    color:#fff;
+    opacity: 0.4;
 }
-.slide-active {
-  left:0 !important;
-}
-.slide{left:100%;}
-.slide-active{transform: scale(1);}
-.fixed{position: absolute;top:0;width:100%;height: 100%;background:#fff;} */
 
 </style>
 
 <template>
-    <div class="fullheight oflow">
+    <div class="fullscreen oflow">
         <pull-to>
-            <div class="fullheight oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
+            <div class="paddscreen5 oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl pd5 " :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
-                        <ul :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}</ul>
+                        <ul class="re text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
                     </li>
                 </transition-group>
             </div> 
@@ -81,11 +76,11 @@
             return {
                 
                 scrollercont:[
-                    {msg: 'Bruce Lee',boxsize:'basbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-20",weither:'cloudy',float:'fl'},
-                    {msg: 'Bruce Lee',boxsize:'rowbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-22",weither:'rain',float:'fr'},
-                    {msg: 'Bruce Lee',boxsize:'basbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-20",weither:'cloudy',float:'fl'},
-                    {msg: 'Bruce Lee',boxsize:'colbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-21",weither:'rain',float:'fl'},
-                    {msg: 'Bruce Lee',boxsize:'bigbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-23",weither:'snow',float:'fl'}
+                    {msg: 'Bruce Lee',boxsize:'basbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-20",weither:'cloudy',float:'fl',weather:'qing'},
+                    {msg: 'Bruce Lee',boxsize:'rowbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-22",weither:'rain',float:'fr',weather:'xiaoyu'},
+                    {msg: 'Bruce Lee',boxsize:'basbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-20",weither:'cloudy',float:'fl',weather:'dayu'},
+                    {msg: 'Bruce Lee',boxsize:'colbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-21",weither:'rain',float:'fl',weather:'xiaoxue'},
+                    {msg: 'Bruce Lee',boxsize:'bigbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-23",weither:'snow',float:'fl',weather:'wu'}
                 ],
                 isdairydetail:false,
                 isdairyshow:false

@@ -4,11 +4,11 @@
 .article ul{
     
     width:100%;
-    height: calc(100% - 92px);
+    height: calc(100% - 87px);
     overflow:hidden;
     background:#fff;
     }
-.dairyText{text-align: center;font-size: 16px;}
+.dairyText{text-align: center;font-size: 14px;}
 .header{
     background:#CC6699;
     width: 100%;
@@ -55,8 +55,8 @@
     */
     
     backface-visibility: hidden;
-
-    transition:0.8s ease-in-out ;
+    
+    transition:0.6s ease-in-out ;
     position:absolute;
 
 }
@@ -78,19 +78,19 @@
     width: 100%;
     transform: rotateY(180deg);
     z-index: 9;
-    background:url("/static/img/back.jpg") 18% 50%/cover  no-repeat;
+    background: #fff;
 }
 </style>
 
 <template>
     <div class="fixed slide">
         <div class="slidebox">
-            <div class="article" :class="{'rotate1':isdairlShow}">
-                 <div class="header h4 " @click="isdairlShow = !isdairlShow">泡芙小姐</div>
+            <div class="article circle5" :class="{'rotate1':isdairlShow}">
+                 <div class="header h4 " >泡芙小姐<span class="right-icon" @click="isdairlShow = !isdairlShow"><i class="iconfont icon-pinglun"></i></span></div>
                 <ul >
                     
                     <pull-to class="dairyTextBox">
-                        <div class="dairyText" v-if="!isdairlShow">
+                        <div class="dairyText">
                             <p>故事的小黄花</p>
 
                             <p>从出生那年就飘着</p>
@@ -122,13 +122,12 @@
                 </ul>
                 <div class="footer_box">
                     <div class="footer">
-                        <span class="hide_mobile" title="标签"><i class="iconfont icon-discount"></i>日记</span>
+                        <span class="hide_mobile" title="标签"><i class="iconfontO icon-discount"></i>日记</span>
                     </div>
                 </div> 
             </div>
-            <div class="comment" :class="{'rotate2':isdairlShow}">
-                123
-                <button  @click="isdairlShow = !isdairlShow">back</button>
+            <div class="comment circle5" :class="{'rotate2':isdairlShow}">
+                <div class="header h4 " >泡芙小姐<span class="right-icon" @click="isdairlShow = !isdairlShow"><i class="iconfont icon-pinglun"></i></span></div>
             </div>
         </div>
     </div>

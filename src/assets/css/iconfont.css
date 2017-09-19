@@ -1,10 +1,24 @@
 @font-face {
+    font-family: "iconfontO";
+    src: url('../font/iconfontO.eot?t=1479220471756'); /* IE9*/
+    src: url('../font/iconfontO.eot?t=1479220471756#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfontO.woff?t=1479220471756') format('woff'), /* chrome, firefox */
+    url('../font/iconfontO.ttf?t=1479220471756') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../font/iconfontO.svg?t=1479220471756#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfontO {
+    font-family: "iconfontO" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
     font-family: "iconfont";
-    src: url('../font/iconfont.eot?t=1479220471756'); /* IE9*/
-    src: url('../font/iconfont.eot?t=1479220471756#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../font/iconfont.woff?t=1479220471756') format('woff'), /* chrome, firefox */
-    url('../font/iconfont.ttf?t=1479220471756') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('../font/iconfont.svg?t=1479220471756#iconfont') format('svg'); /* iOS 4.1- */
+    src: url('../font/iconfont.eot?t=1479220471756'), /* IE9*/
+    url('../font/iconfont.ttf?t=1479220471756') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
 }
 
 .iconfont {
@@ -56,6 +70,60 @@
 .icon-hot:before { content: "\e756"; }
 
 .icon-lock:before { content: "\e698"; }
+
+.icon-fenxiangjiantou:before { content: "\e850"; }
+
+.icon-pinglun:before { content: "\e679"; font-size: 22px;}
+
+.icon-yang:before { content: "\e614"; }
+
+.icon-yangmaoriji:before { content: "\e646"; }
+
+.icon-qing:before { content: "\e607"; }
+
+.icon-xiaoyu:before { content: "\e608"; }
+
+.icon-dayu:before { content: "\e609"; }
+
+.icon-duoyun:before { content: "\e60a"; }
+
+.icon-yintian:before { content: "\e60b"; }
+
+.icon-zhenyu:before { content: "\e60c"; }
+
+.icon-zhongyu:before { content: "\e60d"; }
+
+.icon-leizhenyu:before { content: "\e60e"; }
+
+.icon-tedabaoyu:before { content: "\e60f"; }
+
+.icon-dabaoyu:before { content: "\e610"; }
+
+.icon-xiaoxue:before { content: "\e611"; }
+
+.icon-zhenxue:before { content: "\e612"; }
+
+.icon-baoxue:before { content: "\e613"; }
+
+.icon-daxue:before { content: "\e615"; }
+
+.icon-wu:before { content: "\e616"; }
+
+.icon-shachenbao:before { content: "\e617"; }
+
+.icon-dongyu:before { content: "\e618"; }
+
+.icon-shachen:before { content: "\e619"; }
+
+.icon-qiangshachenbao:before { content: "\e61a"; }
+
+.icon-yangsha:before { content: "\e61b"; }
+
+.icon-mai:before { content: "\e61c"; }
+
+.icon-feng:before { content: "\e637"; }
+
+.icon-taifeng:before { content: "\e639"; }
 
 .h3_icon {
     font-size: 22px;

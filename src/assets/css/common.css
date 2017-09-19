@@ -35,9 +35,19 @@ body {
   background: url("../img/back.jpg") 18% 50%/cover  no-repeat;
 }
 
-.fullheight{
+.fullscreen{
     height: 100%;
     width: 100%;
+}
+.paddscreen10{
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+.paddscreen5{
+    height: 100%;
+    width: 100%;
+    padding: 5px;
 }
 ol,ul ,li{
     list-style: none;
@@ -78,6 +88,12 @@ img {
 }
 .circle {
     border-radius: 50%;
+}
+.circle5 {
+    border-radius: 5px;
+}
+.circle10 {
+    border-radius: 10px;
 }
 hr {
     margin-top: 20px;
@@ -158,7 +174,15 @@ pre code {
 .container:after {
     clear: both;
 }
-
+.ab{
+    position: absolute;
+}
+.re{
+    position: relative;
+}
+.scroller{
+    -webkit-overflow-scrolling: touch;
+}
 /* #app:before{
     content: '';
     position: fixed;
@@ -253,3 +277,14 @@ pre code {
 .col-xs-12 {
     width: 100%;
 }
+
+.right-icon{
+    position: absolute;
+    right:10px;
+    top: 7px;
+    transition: all .5s ease;
+}
+.right-icon-active{
+    transform:rotate(180deg);
+}
+

@@ -6,7 +6,7 @@
             <div class="my-icon-button palette-button-sub-2"  @touchstart="toggle">3</div>
             <div class="my-icon-button palette-button-sub-3"  @touchstart="toggle">4</div>
         </div>
-        <div class="sheep-main-button" @touchstart="toggle">+</div>
+        <div class="sheep-main-button" @click="toggle">+</div>
     </div >
 </template>
 
