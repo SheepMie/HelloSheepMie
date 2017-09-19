@@ -8,8 +8,14 @@
 .bigbox{width:100%;height: 300px;}
 
 .oflow li ul{
-    width: 100%;height: 100%;background-repeat: no-repeat !important;background-size: cover !important;overflow: hidden;
-    
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     }
 .vue-waterfall div{background:#f00}
 
@@ -49,9 +55,9 @@
 <template>
     <div class="fullscreen oflow">
         <pull-to>
-            <div class="paddscreen5 oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
+            <div class="fullscreen pd3 oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
-                    <li v-for="(item,index) in scrollercont" class="fl pd5 " :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
+                    <li v-for="(item,index) in scrollercont" class="fl pd3 " :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
                         <ul class="re text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
                     </li>
                 </transition-group>

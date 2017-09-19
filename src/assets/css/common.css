@@ -39,16 +39,7 @@ body {
     height: 100%;
     width: 100%;
 }
-.paddscreen10{
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-}
-.paddscreen5{
-    height: 100%;
-    width: 100%;
-    padding: 5px;
-}
+
 ol,ul ,li{
     list-style: none;
 }
@@ -219,6 +210,7 @@ pre code {
 .fr{float: right;}
 .pd1{padding: 1px;}
 .pd2{padding: 2px;}
+.pd3{padding: 3px;}
 .pd5{padding: 5px;}
 .pd8{padding: 8px;}
 .pd10{padding: 10px;}
