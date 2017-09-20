@@ -15,6 +15,17 @@
 .comment_box{
     display: -webkit-flex;
     display: flex;
+    position: relative;
+}
+.comment_cont:after{
+    content: '';
+    height: 1px;
+    width: calc(100% - 45px);
+    color:#eee;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    z-index:9999
 }
 .floor_time{
     color:#C0C0C0;
@@ -48,7 +59,10 @@ export default {
   name: 'sheep-comment',
   data () {
     return {
-        list:[{avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=400&u=ac9670ffc652b480faf411317ad72cdcb517dae2',floor:'1',time:'今天20:33',comment_text:'对，你要有星星，事情子、总会一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件解决的'}]
+        list:[
+            {avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=400&u=ac9670ffc652b480faf411317ad72cdcb517dae2',floor:'1',time:'今天20:33',comment_text:'对，你要有星星，事情子、总会一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件解决的'},
+            {avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=400&u=ac9670ffc652b480faf411317ad72cdcb517dae2',floor:'2',time:'今天20:55',comment_text:'哈哈一笑很倾城'}
+            ]
     }
   },
   methods: {

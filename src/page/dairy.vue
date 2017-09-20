@@ -1,13 +1,20 @@
 <style>
 
 .fixed{position: absolute;top:0;width:100%;height: 100%;padding:10px;}
-.article ul,.comment ul{
+.article ul{
     
     width:100%;
     height: calc(100% - 87px);
     overflow:hidden;
     background:#fff;
     }
+.comment ul{
+    width:100%;
+    height: calc(100% - 46px);
+    overflow:hidden;
+    background:#fff;
+    border-radius: 0 0 5px 5px;
+}
 .dairyText{
     font-size: 14px;
     opacity: 0;
@@ -162,11 +169,11 @@
                         </div>
                     </pull-to>
                 </ul>
-                <div class="footer_box">
+                <!--<div class="footer_box">
                     <div class="footer">
                         <span class="hide_mobile" title="标签"><i class="iconfontO icon-discount"></i>日记</span>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
