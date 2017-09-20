@@ -73,7 +73,7 @@
 
 .icon-fenxiangjiantou:before { content: "\e850"; }
 
-.icon-pinglun:before { content: "\e679"; font-size: 22px;}
+.icon-pinglun:before { content: "\e679"; }
 
 .icon-yang:before { content: "\e614"; }
 
@@ -124,6 +124,8 @@
 .icon-feng:before { content: "\e637"; }
 
 .icon-taifeng:before { content: "\e639"; }
+
+.icon-back:before { content: "\e61d"; }
 
 .h3_icon {
     font-size: 22px;

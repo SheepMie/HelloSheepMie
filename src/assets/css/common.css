@@ -281,10 +281,22 @@ pre code {
 .right-icon{
     position: absolute;
     right:10px;
-    top: 7px;
+    top: 6px;
+    transition: all .5s ease;
+}
+.left-icon{
+    position: absolute;
+    left:10px;
+    top: 6px;
     transition: all .5s ease;
 }
 .right-icon-active{
     transform:rotate(180deg);
 }
-
+.z-index-max {
+    z-index: 9999;
+}
+.mini-em{
+    height: 18px !important;
+    vertical-align: text-bottom;
+}
