@@ -10,7 +10,7 @@
     }
 .comment ul{
     width:100%;
-    height: calc(100% - 46px);
+    height: calc(100% - 47px);
     overflow:hidden;
     background:#fff;
     border-radius: 0 0 5px 5px;
@@ -19,6 +19,7 @@
     font-size: 14px;
     opacity: 0;
     transition:0.6s ease-in-out ;
+    overflow: hidden;
 }
 .dairyout{
     opacity: 1;
@@ -87,7 +88,6 @@
 }
 .comment{
     transform: rotateY(180deg);
-    z-index: 9;
 }
 </style>
 
@@ -95,7 +95,7 @@
     <div class="fixed slide">
         <div class="slidebox">
             <div class="article circle5" :class="{'rotate1':isdairlShow}">
-                 <div class="header h4 " >泡芙小姐<span class="right-icon" @click="isdairlShow = !isdairlShow"><i class="iconfont icon-pinglun h3"></i></span></div>
+                 <div class="header h4 " >泡芙小姐<span class="right-icon" @click="dairlShow()"><i class="iconfont icon-pinglun h3"></i></span></div>
                 <ul >
                     
                     <pull-to >
@@ -160,20 +160,15 @@
             </div>
             <div class="comment circle5" :class="{'rotate2':isdairlShow}">
                 <div class="header h4 text-center" >泡芙小姐
-                    <span class="left-icon " @click="isdairlShow = !isdairlShow"><i class="iconfont icon-back h3"></i></span>
+                    <span class="left-icon " @click="dairlShow()"><i class="iconfont icon-back h3"></i></span>
                 </div>
-                <ul>
-                    <pull-to>
+                <ul >
+                    <pull-to >
                         <div class="dairyText pd5" :class="{'dairyout':isdairlShow}">
                             <comment></comment>
                         </div>
                     </pull-to>
                 </ul>
-                <!--<div class="footer_box">
-                    <div class="footer">
-                        <span class="hide_mobile" title="标签"><i class="iconfontO icon-discount"></i>日记</span>
-                    </div>
-                </div>-->
             </div>
         </div>
     </div>
@@ -181,13 +176,12 @@
 
 <script>
     import PullTo from 'vue-pull-to';
-    import Comment from '@/components/comment.vue';
+    import Comment from '@/components/Comment.vue';
     export default {
         name: 'dairy',
         components: {PullTo,Comment},
         data () {
             return {
-                isdairydetail:false,
                 isdairlShow:false
             }
         },
@@ -195,5 +189,11 @@
         methods: { 
             
         },
+        methods:{
+            dairlShow(){
+                let vm = this;
+                vm.isdairlShow = !vm.isdairlShow;
+            }
+        }
     }
 </script>

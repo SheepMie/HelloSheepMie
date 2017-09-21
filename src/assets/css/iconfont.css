@@ -127,6 +127,10 @@
 
 .icon-back:before { content: "\e61d"; }
 
+.icon-laba:before { content: "\e61e"; }
+
+.icon-laba1:before { content: "\e61f"; }
+
 .h3_icon {
     font-size: 22px;
     color: #59bfff;

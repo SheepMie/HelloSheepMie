@@ -2,28 +2,38 @@
 .comment_header{
     padding: 0 10px 0 0;
 }
-.comment_header .avatar{
-    display: block;
-    width: 42px;
-    height: 42px;
+.avatar{
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 100%;
+    background-position: 50% 50%;
+    -webkit-background-size: cover;
+    background-size: cover;
     background-color: #eee;
     border-radius: 100%;
     background-position: 50% 50%;
     -webkit-background-size: cover;
     background-size: cover;
 }
+.comment_header .avatar{
+    width: 42px;
+    height: 42px;
+}
+
 .comment_box{
     display: -webkit-flex;
     display: flex;
     position: relative;
+    padding: 8px 5px;
 }
-.comment_cont:after{
+
+.part_line:after{
     content: '';
     height: 1px;
-    width: calc(100% - 45px);
-    color:#eee;
+    width: calc(100% - 55px);
+    background:#eee;
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     right: 0;
     z-index:9999
 }
@@ -39,30 +49,111 @@
 }
 .comment_text{
     font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.comment_other{
+    padding: 5px 0;
+}
+.laba{
+    display: inline-block;
+    width: 20px;
+    height: 25px;
+    text-align: center;
+    color:#000066;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.O2O{display: inline-block;padding-right: 10px;}
+img.avatar{
+    width: 25px;
+    vertical-align: middle !important;
+}
+.O2O_cont{
+    vertical-align: middle;
+    color:#000066;
+    line-height: 25px;
+    font-size: 13px;
 }
 </style>
 <template>
     <div>
-        <li class="comment_box oflow pd5" v-for="item in list">
-            <div class="comment_header oflow"><span class="pic avatar" :style="{'background-image': 'url('+item.avatar+')'}"></span></div>
-            <div class="comment_cont">
-                <div class="floor_time ">{{item.floor}}楼&nbsp;&nbsp;{{item.time}}</div>
-                <div class="comment_text ">{{item.comment_text}}<img class="mini-em" src="https://qzonestyle.gtimg.cn/qzone/em/e400824@2x.gif"></div>
-                <div class="comment_other "></div>
+        <li class="comment_box oflow" v-for="(item,index) in list">
+            <div class="comment_header oflow" @click="replyMaster()"><span class="pic avatar" :style="{'background-image': 'url('+item.avatar+')'}"></span></div>
+            <div class="comment_cont " :class="{'part_line':list.length !== index+1}">
+                <div class="floor_time ">{{index+1}}楼&nbsp;&nbsp;{{item.time}}</div>
+                <div class="comment_text " @click="replyMaster()">{{item.comment_text}}<img class="mini-em" src="https://qzonestyle.gtimg.cn/qzone/em/e400824@2x.gif"></div>
+                <li class="comment_other " v-for="data in item.o2olist" @click="replyGuest()">
+                    <span class="O2O">
+                        <img class="avatar" :src="data.from_avatar">
+                        <span class="laba"><i class="iconfont icon-laba"></i></span>
+                        <img class="avatar" :src="data.to_avatar">
+                    </span>
+                    <span class="O2O_cont">{{data.o2o_cont}}</span>
+                </li>
             </div>
         </li>
     </div>
 </template>
 
 <script>
+
 export default {
   name: 'sheep-comment',
+  
   data () {
     return {
         list:[
-            {avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=400&u=ac9670ffc652b480faf411317ad72cdcb517dae2',floor:'1',time:'今天20:33',comment_text:'对，你要有星星，事情子、总会一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件解决的'},
-            {avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=400&u=ac9670ffc652b480faf411317ad72cdcb517dae2',floor:'2',time:'今天20:55',comment_text:'哈哈一笑很倾城'}
-            ]
+            {
+                avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=50',
+                time:'今天20:33',
+                comment_text:'对，你要有星星，事情子、总会一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件一件解决的',
+                o2olist:[
+                    {
+                        from_avatar:'https://avatars0.githubusercontent.com/u/19399469?v=4&s=50',
+                        to_avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=50',
+                        o2o_cont:'哈哈哈哈要努力'
+                    },{
+                        from_avatar:'https://avatars0.githubusercontent.com/u/20356263?v=4&s=50',
+                        to_avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=50',
+                        o2o_cont:'你要爆咯'
+                    },{
+                        from_avatar:'https://avatars3.githubusercontent.com/u/20961408?v=4&s=50',
+                        to_avatar:'https://avatars0.githubusercontent.com/u/20356263?v=4&s=50',
+                        o2o_cont:'丢啊丢啊丢楼某'
+                    }]
+            },{
+                avatar:'https://avatars1.githubusercontent.com/u/17894980?v=4&s=50',
+                time:'今天20:55',
+                comment_text:'哈哈一笑很倾城',
+                o2olist:[
+                    {
+                        from_avatar:'https://avatars0.githubusercontent.com/u/19399469?v=4&s=50',
+                        to_avatar:'https://avatars1.githubusercontent.com/u/17894980?v=4&s=50',
+                        o2o_cont:'哈哈哈哈要努力'
+                    }]
+            },{
+                avatar:'https://avatars0.githubusercontent.com/u/12568225?v=4&s=50',
+                time:'今天20:55',
+                comment_text:'哎哟哎哟哎哟哎哟',
+                o2olist:[
+                    {
+                        from_avatar:'https://avatars0.githubusercontent.com/u/19399469?v=4&s=50',
+                        to_avatar:'https://avatars0.githubusercontent.com/u/12568225?v=4&s=50',
+                        o2o_cont:'喂喂喂，有什么好矫情的啊，真的是够了'
+                    }]
+            },{
+                avatar:'https://avatars2.githubusercontent.com/u/26362384?v=4&s=50',
+                time:'今天20:55',
+                comment_text:'who let the dogs out!!!',
+                o2olist:[
+                    {
+                        from_avatar:'https://avatars0.githubusercontent.com/u/19399469?v=4&s=50',
+                        to_avatar:'https://avatars2.githubusercontent.com/u/26362384?v=4&s=50',
+                        o2o_cont:'吼吼吼！'
+                    }]
+            }]
     }
   },
   methods: {
@@ -75,6 +166,9 @@ export default {
             }
         }
       },
+      replyMaster() {
+
+      }
     }
 }
 </script>

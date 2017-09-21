@@ -152,6 +152,13 @@ pre code {
     background-color: transparent;
     border-radius: 0;
 }
+textarea,input {
+    background: 0 0; 
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+     border-radius: 0; 
+    -webkit-appearance: none;
+}
 .container {
     margin-right: auto;
     margin-left: auto;
@@ -291,4 +298,11 @@ pre code {
 .mini-em{
     height: 18px !important;
     vertical-align: text-bottom;
+}
+
+button{
+    overflow: visible;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
 }

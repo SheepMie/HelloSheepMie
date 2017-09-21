@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <reply-box></reply-box>
     <router-view></router-view>
     <tabs></tabs>
   </div>
@@ -7,9 +8,11 @@
 
 <script>
 import Tabs from './components/Tabs.vue'
+import ReplyBox from './components/ReplyBox.vue'
+
 
 export default {
-  components: { 'tabs': Tabs }
+  components: { Tabs,ReplyBox }
 }
 </script>
 
