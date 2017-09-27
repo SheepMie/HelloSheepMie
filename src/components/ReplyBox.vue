@@ -113,6 +113,20 @@
     font-size: 14px;
     padding: 0 10px 0 0;
 }
+.emoji-mod {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin: -1px 0 0;
+    position: relative;
+}
+.emoji-mod .select-area {
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    padding-top: 42.857%;
+    position: relative;
+}
+
 </style>
 
 <template>
@@ -133,11 +147,32 @@
                     <span class="counter">20</span>
                 </div>
             </div>
+            <div class="form-ft">
+                <div data-textmod="emoji" class="emoji-mod">
+                    
+                        <mt-swipe :auto="0">
+                            <mt-swipe-item>
+                                <div class="select-area">1</div>
+                            </mt-swipe-item>
+                            <mt-swipe-item>
+                                <div class="select-area">2</div>
+                            </mt-swipe-item>
+                            <mt-swipe-item>
+                                <div class="select-area">3</div>
+                            </mt-swipe-item>
+                        </mt-swipe>
+                    
+                </div>
+                <!--  -->
+            </div>
         </div>
+        
+        <div style="position: absolute;left: 0;right: 0; top: -200px;bottom: -200px;background-color: rgba(0,0,0,.5);"></div>
     </div>  
 </template>
 
 <script>
+
     export default {
         name: 'sheep-replybox',
         data () {

@@ -171,15 +171,17 @@
                 </ul>
             </div>
         </div>
+        <reply-box></reply-box>
     </div>
 </template>
 
 <script>
     import PullTo from 'vue-pull-to';
     import Comment from '@/components/Comment.vue';
+    import ReplyBox from '@/components/ReplyBox.vue'
     export default {
         name: 'dairy',
-        components: {PullTo,Comment},
+        components: {PullTo,Comment,ReplyBox},
         data () {
             return {
                 isdairlShow:false

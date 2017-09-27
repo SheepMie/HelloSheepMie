@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import FastClick from 'fastclick'
+import { Swipe, SwipeItem } from 'mint-ui';
 
 import './assets/css/common.css'
 import './assets/css/iconfont.css'
@@ -15,7 +16,8 @@ if ('addEventListener' in document) {
   }, false);  
 }  
 Vue.config.productionTip = false
-
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
