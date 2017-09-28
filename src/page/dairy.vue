@@ -171,14 +171,16 @@
                 </ul>
             </div>
         </div>
-        <reply-box></reply-box>
+        <reply-box v-if="$store.state.isReplyBox"></reply-box>
     </div>
 </template>
 
 <script>
     import PullTo from 'vue-pull-to';
     import Comment from '@/components/Comment.vue';
-    import ReplyBox from '@/components/ReplyBox.vue'
+    import ReplyBox from '@/components/ReplyBox.vue';
+    import store from '@/store/index';
+
     export default {
         name: 'dairy',
         components: {PullTo,Comment,ReplyBox},
@@ -187,7 +189,7 @@
                 isdairlShow:false
             }
         },
-        
+        store,
         methods: { 
             
         },

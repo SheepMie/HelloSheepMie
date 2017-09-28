@@ -80,10 +80,10 @@ img.avatar{
 <template>
     <div>
         <li class="comment_box oflow" v-for="(item,index) in list">
-            <div class="comment_header oflow" @click="replyMaster()"><span class="pic avatar" :style="{'background-image': 'url('+item.avatar+')'}"></span></div>
+            <div class="comment_header oflow" @click="$store.commit('replyMaster')"><span class="pic avatar" :style="{'background-image': 'url('+item.avatar+')'}"></span></div>
             <div class="comment_cont " :class="{'part_line':list.length !== index+1}">
                 <div class="floor_time ">{{index+1}}楼&nbsp;&nbsp;{{item.time}}</div>
-                <div class="comment_text " @click="replyMaster()">{{item.comment_text}}<img class="mini-em" src="https://qzonestyle.gtimg.cn/qzone/em/e400824@2x.gif"></div>
+                <div class="comment_text " @click="$store.commit('replyMaster')">{{item.comment_text}}<img class="mini-em" src="https://qzonestyle.gtimg.cn/qzone/em/e400824@2x.gif"></div>
                 <li class="comment_other " v-for="data in item.o2olist" @click="replyGuest()">
                     <span class="O2O">
                         <img class="avatar" :src="data.from_avatar">
@@ -98,10 +98,10 @@ img.avatar{
 </template>
 
 <script>
-
+import store from '@/store/index';
 export default {
   name: 'sheep-comment',
-  
+  store,
   data () {
     return {
         list:[
@@ -166,9 +166,7 @@ export default {
             }
         }
       },
-      replyMaster() {
-
-      }
+      
     }
 }
 </script>
