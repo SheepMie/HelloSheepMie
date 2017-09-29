@@ -1,22 +1,26 @@
 <style>
-
-.boxheight1{height: 150px;}
-.boxheight2{height: 300px;}
-.basbox{width:50%;height: 150px;}
-.colbox{width:100%;height: 150px;}
-.rowbox{width:50%;height: 300px;}
-.bigbox{width:100%;height: 300px;}
+.oflow li{
+    position: relative;
+    overflow: hidden;
+}
+.basbox{width:50%;/*height: 25%;*/padding-top:50%;}
+.colbox{width:100%;/*height: 25%;*/padding-top:50%;}
+.rowbox{width:50%;/*height: 50%;*/padding-top:100%;}
+.bigbox{width:100%;/*height: 50%;*/padding-top:100%;}
 
 .oflow li ul{
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
     background-repeat: no-repeat !important;
     background-size: cover !important;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    }
+}
 .vue-waterfall div{background:#f00}
 
 .fade-enter-active,.fade-leave-active{
@@ -57,8 +61,8 @@
         <pull-to>
             <div class="fullscreen pd3 oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
-                    <li v-for="(item,index) in scrollercont" class="fl pd3 " :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
-                        <ul class="re text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
+                    <li v-for="(item,index) in scrollercont" class="fl" :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
+                        <ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
                     </li>
                 </transition-group>
             </div> 

@@ -6,6 +6,8 @@ import router from './router'
 import FastClick from 'fastclick'
 import 'mint-ui/lib/style.css'
 import { Swipe, SwipeItem } from 'mint-ui';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 import './assets/css/common.css'
 import './assets/css/iconfont.css'
