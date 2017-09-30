@@ -29,7 +29,6 @@ export default new Router({
       name: 'classList',
       component: classList,
       children:[
-        {path:'dairy',name: 'dairy',component:dairy}
       ]
     }
   ]
