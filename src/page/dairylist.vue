@@ -53,21 +53,24 @@
     color:#fff;
     opacity: 0.4;
 }
-
+/*.swiper-container {
+    height: 100%;
+}
+.swiper-slide{height: auto}*/
 </style>
 
 <template>
     <div class="fullscreen oflow">
         <pull-to>
-            <div class="fullscreen pd3 oflow fade-enter" :class="{'fade-leave-active':isdairydetail}">
+            <div class="pd3  fade-enter" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl" :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
                         <ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
                     </li>
                 </transition-group>
-            </div> 
+            </div>
         </pull-to>
-        <transition name="slide-fade">
+        <transition name="slide-fade" class="dairy">
             <router-view></router-view>
         </transition>
         <!-- <div class="fixed slide" :class="{'slide-active':isdairyshow}">
@@ -137,7 +140,13 @@
                 setTimeout(function () {
                     Velocity(el,{ opacity: 0,},{ complete: done })
                 }, delay)
-            } 
+            } ,
+            refresh(loaded) {
+                setTimeout(() => {
+                  this.dataList.reverse();
+                  loaded('done');
+                }, 2000);
+              }
         },
     }
 </script>

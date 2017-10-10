@@ -1,29 +1,53 @@
 <style scoped>
+.TitleLine{
+    padding:10px;
+}
+.swiper-container {
+    overflow: visible;
+}
 .swiper-slide {
-    width: 200px;
-    background: red;
-    height: 100px;
-    margin-right:20px;
+    box-sizing: border-box;
+    padding-right:10px;
   }
+.swiper-slide li{
+    width: 100%;
+    height: 60px;
+    border-radius: 4px;
+    background:url(https://yanxuan.nosdn.127.net/15030393722652401.jpg);
+    background-size: auto 100%;
+    background-position: center;
+    
+   
+}
 </style>
 
 <template>
     <div class="fullscreen oflow">
-    <swiper :options="swiperOption">
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-        <swiper-slide>Slide 4</swiper-slide>
-        <swiper-slide>Slide 5</swiper-slide>
-        <swiper-slide>Slide 6</swiper-slide>
-        <swiper-slide>Slide 7</swiper-slide>
-        <swiper-slide>Slide 8</swiper-slide>
-        <swiper-slide>Slide 9</swiper-slide>
-        <swiper-slide>Slide 10</swiper-slide>
-      </swiper> 
+        <div class="TitleLine">
+            <swiper :options="swiperOption">
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+            <swiper-slide>
+                <li> class1</li>
+            </swiper-slide>
+          </swiper> 
+        </div>
+    
     </div>  
 </template>
-
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import PullTo from 'vue-pull-to';
@@ -34,13 +58,9 @@
         data () {
             return {
                 swiperOption: {
-                   
-                      pagination: '.swiper-pagination',
-          slidesPerView: 3,
-          paginationClickable: true,
-          spaceBetween: 30,
-          freeMode: true
-                   
+                      slidesPerView: 3,
+                      paginationClickable: true,
+                      freeMode : true,
                  }
             }
           },

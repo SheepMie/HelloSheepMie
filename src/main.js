@@ -6,9 +6,10 @@ import router from './router'
 import FastClick from 'fastclick'
 import 'mint-ui/lib/style.css'
 import 'swiper/dist/css/swiper.css'
-import { Swipe, SwipeItem } from 'mint-ui';
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper)
+import { Swipe, SwipeItem, Loadmore } from 'mint-ui';
+
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+// Vue.use(VueAwesomeSwiper)
 
 import './assets/css/common.css'
 import './assets/css/iconfont.css'
@@ -22,6 +23,7 @@ if ('addEventListener' in document) {
 Vue.config.productionTip = false
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Loadmore.name, Loadmore);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
