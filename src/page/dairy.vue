@@ -7,6 +7,7 @@
     height: calc(100% - 87px);
     overflow:hidden;
     background:#fff;
+    position: relative;
     }
 .comment ul{
     width:100%;
@@ -14,6 +15,7 @@
     overflow:hidden;
     background:#fff;
     border-radius: 0 0 5px 5px;
+    position: relative;
 }
 .dairyText{
     font-size: 14px;
@@ -98,7 +100,7 @@
                  <div class="header h4 " >泡芙小姐<span class="right-icon" @click="dairlShow()"><i class="iconfont icon-pinglun h3"></i></span></div>
                 <ul >
                     
-                    <pull-to >
+                    <scroller >
                         <div class="dairyText text-center" :class="{'dairyout':!isdairlShow}">
                             <p>故事的小黄花</p>
 
@@ -149,7 +151,7 @@
 
                             <p>消失的下雨天</p>
                         </div>
-                    </pull-to>
+                    </scroller>
                     
                 </ul>
                 <div class="footer_box">
@@ -176,14 +178,13 @@
 </template>
 
 <script>
-    import PullTo from 'vue-pull-to';
     import Comment from '@/components/Comment.vue';
     import ReplyBox from '@/components/ReplyBox.vue';
     import store from '@/store/index';
 
     export default {
         name: 'dairy',
-        components: {PullTo,Comment,ReplyBox},
+        components: {Comment,ReplyBox},
         data () {
             return {
                 isdairlShow:false

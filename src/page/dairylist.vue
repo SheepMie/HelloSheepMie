@@ -1,5 +1,5 @@
 <style>
-.oflow li{
+.fullscreen li{
     position: relative;
     overflow: hidden;
 }
@@ -8,7 +8,7 @@
 .rowbox{width:50%;/*height: 50%;*/padding-top:100%;}
 .bigbox{width:100%;/*height: 50%;*/padding-top:100%;}
 
-.oflow li ul{
+.fullscreen li ul{
     position: absolute;
     top: 3px;
     left: 3px;
@@ -60,31 +60,27 @@
 </style>
 
 <template>
-    <div class="fullscreen oflow">
-        <pull-to>
-            <div class="pd3  fade-enter" :class="{'fade-leave-active':isdairydetail}">
+    <div class="fullscreen">
+        <scroller>
+            <div class="pd3  fade-enter oflow" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl" :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
-                        <ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()">{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
+                        <router-link  to="/dairylist/dairy"  @click.native="lookdairy"><ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()" >{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul></router-link>
                     </li>
                 </transition-group>
             </div>
-        </pull-to>
+        </scroller>
         <transition name="slide-fade" class="dairy">
             <router-view></router-view>
         </transition>
-        <!-- <div class="fixed slide" :class="{'slide-active':isdairyshow}">
-            123
-        </div> -->
     </div>  
 </template>
 
 <script>
-    import PullTo from 'vue-pull-to';
     import Velocity from 'velocity-animate';
     export default {
         name: 'dairylist',
-        components: {PullTo,Velocity},
+        components: {Velocity},
         data () {
             return {
                 
@@ -124,7 +120,7 @@
                 var vm = this;
                 vm.isdairydetail = true;
                     vm.isdairyshow = true;
-                    vm.$router.push('/dairylist/dairy')
+                    //vm.$router.push('/dairylist/dairy')
             },
             beforeEnter (el) {
                 el.style.opacity = 0;
@@ -140,13 +136,8 @@
                 setTimeout(function () {
                     Velocity(el,{ opacity: 0,},{ complete: done })
                 }, delay)
-            } ,
-            refresh(loaded) {
-                setTimeout(() => {
-                  this.dataList.reverse();
-                  loaded('done');
-                }, 2000);
-              }
+            } 
+           
         },
     }
 </script>
