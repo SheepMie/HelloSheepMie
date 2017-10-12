@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-//import FastClick from 'fastclick'
+import FastClick from 'fastclick'
 import 'mint-ui/lib/style.css'
 import 'swiper/dist/css/swiper.css'
 import { Swipe, SwipeItem,  } from 'mint-ui';
@@ -16,11 +16,11 @@ import './assets/css/common.css'
 import './assets/css/iconfont.css'
 
 
-// if ('addEventListener' in document) {  
-//   document.addEventListener('DOMContentLoaded', function() {  
-//     FastClick.attach(document.body);  
-//   }, false);  
-// }  
+if ('addEventListener' in document) {  
+  document.addEventListener('DOMContentLoaded', function() {  
+    FastClick.attach(document.body);  
+  }, false);  
+}  
 Vue.use(VueScroller)
 Vue.config.productionTip = false
 Vue.component(Swipe.name, Swipe);

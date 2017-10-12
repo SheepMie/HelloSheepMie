@@ -99,7 +99,6 @@
             <div class="article circle5" :class="{'rotate1':isdairlShow}">
                  <div class="header h4 " >泡芙小姐<span class="right-icon" @click="dairlShow()"><i class="iconfont icon-pinglun h3"></i></span></div>
                 <ul >
-                    
                     <scroller >
                         <div class="dairyText text-center" :class="{'dairyout':!isdairlShow}">
                             <p>故事的小黄花</p>
@@ -165,11 +164,11 @@
                     <span class="left-icon " @click="dairlShow()"><i class="iconfont icon-back h3"></i></span>
                 </div>
                 <ul >
-                    <pull-to >
+                    <scroller >
                         <div class="dairyText pd5" :class="{'dairyout':isdairlShow}">
                             <comment></comment>
                         </div>
-                    </pull-to>
+                    </scroller>
                 </ul>
             </div>
         </div>

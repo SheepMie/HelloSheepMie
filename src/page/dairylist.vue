@@ -65,7 +65,7 @@
             <div class="pd3  fade-enter oflow" :class="{'fade-leave-active':isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl" :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
-                        <router-link  to="/dairylist/dairy"  @click.native="lookdairy"><ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()" >{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul></router-link>
+                        <ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()" >{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
                     </li>
                 </transition-group>
             </div>
@@ -120,7 +120,7 @@
                 var vm = this;
                 vm.isdairydetail = true;
                     vm.isdairyshow = true;
-                    //vm.$router.push('/dairylist/dairy')
+                    vm.$router.push('/dairylist/dairy')
             },
             beforeEnter (el) {
                 el.style.opacity = 0;
