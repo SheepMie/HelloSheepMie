@@ -5,11 +5,27 @@
 .swiper-container {
     overflow: visible;
 }
-.swiper-slide {
+.fullscreen{
+  position: relative;
+}
+.background-blur{
+  background:url('https://yanxuan.nosdn.127.net/15030393722652401.jpg') center/cover no-repeat;
+  -webkit-filter: blur(15px);
+  filter: blur(15px);
+  position: absolute;
+  z-index: -1
+}
+.scroll-cont{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2
+}
+.gallery-thumbs .swiper-slide {
     box-sizing: border-box;
     padding-right:10px;
   }
-.swiper-slide li{
+.gallery-thumbs .swiper-slide li{
     width: 100%;
     height: 60px;
     border-radius: 4px;
@@ -18,7 +34,7 @@
     overflow: hidden;
    
 }
-.swiper-slide li a{
+.gallery-thumbs .swiper-slide li a{
     display: block;
     height: 100%;
     width: 100%;
@@ -28,104 +44,52 @@
     color:#fff;
     background:rgba(0,0,0,0.3);
 }
-.scroll-container li{color:#fff;}
-/*.cont-scroller{position: relative;height: calc(100% - 80px);}
-.my-scroller{color:#fff;}
-.my-scroller .waterfalls{overflow: hidden;}
-.waterfalls ul{
-  width:50%;
-  overflow: hidden;
-}
-.waterfalls .waterfalls_l{
-  float: left;
-}
-.waterfalls .waterfalls_r{
-  float: right;
-}
-.waterfalls ul li{
-  width: 100%;
-  padding:5px;
-}
-.waterfalls ul li img{
-  width:100%;
-}*/
+.gallery-thumbs li a{color:#fff;}
 
 .gallery-thumbs {
-    height: 20%!important;
-    box-sizing: border-box;
-    padding: 10px 0;
-  }
-  .gallery-thumbs .swiper-slide {
-    width: 30%;
-    height: 100%;
-    opacity: 0.4;
-  }
-  /*.gallery-thumbs .swiper-slide-active {
-    opacity: 1;
-  }*/
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+.gallery-thumbs .swiper-slide {
+  width: 35%;
+  opacity: 0.4;
+}
+.gallery-thumbs .swiper-slide-active {
+  opacity: 1;
+}
+.TitleLine{
+  height: calc(100% - 80px);
+}
+.gallery-cont{
+  height: 100%;
+}
+.gallery-cont .swiper-slide{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>
 
 <template>
     <div class="fullscreen oflow">
-        <div class="TitleLine">
-             
-            <swiper :options="swiperOptionTop" class="gallery-top" ref="swiperTop">
-              <swiper-slide><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></swiper-slide>
-              <swiper-slide ><img src="http://yanxuan.nosdn.127.net/8fe0b7be33e5c19818f4ab0ae62310dd.png"></swiper-slide>
-              <swiper-slide ><img src="http://yanxuan.nosdn.127.net/4493a1385009b0e9effbd9287257b269.png"></swiper-slide>
-              <swiper-slide ><img src="http://yanxuan.nosdn.127.net/2bbfb3bf0a0b758fb950a351e22c3f01.png"></swiper-slide>
-              <swiper-slide ><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></swiper-slide>
-            </swiper>
-            <div class="swiper-pagination swiper-pagination-white" slot="pagination"></div>
-            <swiper class="gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
-                <swiper-slide v-for="(item,index) in classList" v-bind:key="index+1" @click.native="changebox(index)">
-                    <li  :style="{'background-image': 'url('+item.bgp+')'}"> <a>{{item.title}}</a></li>
-                </swiper-slide>
+      <div class="scroll-cont fullscreen">
+          <swiper class="gallery-thumbs" :options="swiperOptionThumbs" ref="swiperThumbs">
+            <swiper-slide v-for="(item,index) in classList" v-bind:key="index+1" @click.native="changebox(index)">
+                <li  :style="{'background-image': 'url('+item.bgp+')'}"> <a>{{item.title}}</a></li>
+            </swiper-slide>
+          </swiper>
+          <div class="TitleLine">
+            <swiper :options="swiperOptionTop" class="gallery-cont" ref="swiperTop">
+              <swiper-slide><dt><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></dt></swiper-slide>
+              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/8fe0b7be33e5c19818f4ab0ae62310dd.png"></dt></swiper-slide>
+              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/4493a1385009b0e9effbd9287257b269.png"></dt></swiper-slide>
+              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/2bbfb3bf0a0b758fb950a351e22c3f01.png"></dt></swiper-slide>
+              <swiper-slide ><dt><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></dt></swiper-slide>
             </swiper>
         </div>
-        <!-- <div class="cont-scroller">
-          <scroller class="my-scroller">
-            <div class="waterfalls">
-              <ul class="waterfalls_l">
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                
-              </ul>
-              <ul class="waterfalls_r">
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-                <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=715776187,1717927711&fm=27&gp=0.jpg"></li>
-              </ul>
-            </div>
-              
-              
-          </scroller>
-        </div> -->
+      </div>
+      <div class="background-blur fullscreen"></div>  
     </div>  
 </template>
 <script>
@@ -138,7 +102,6 @@
             return {
                 swiperOptionThumbs: {
                       slidesPerView: 'auto',
-                      //paginationClickable: true,
                       freeMode : true,
                       notNextTick: true,
                       centeredSlides: true,
