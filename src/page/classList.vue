@@ -9,11 +9,21 @@
   position: relative;
 }
 .background-blur{
-  background:url('https://yanxuan.nosdn.127.net/15030393722652401.jpg') center/cover no-repeat;
-  -webkit-filter: blur(15px);
-  filter: blur(15px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
-  z-index: -1
+  z-index: -1;
+  
+}
+.back-active{
+  opacity: 1;
+
+  transition: all 1s ease;
+}
+.back-leave{
+  opacity: 0;
+  transition: all 1s ease;
 }
 .scroll-cont{
   position: absolute;
@@ -29,8 +39,9 @@
     width: 100%;
     height: 60px;
     border-radius: 4px;
-    background-size: auto 100%;
+    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden;
    
 }
@@ -63,6 +74,9 @@
 .gallery-cont{
   height: 100%;
 }
+.gallery-cont img{
+  border-radius: 6px;
+}
 .gallery-cont .swiper-slide{
   display: flex;
   align-items: center;
@@ -80,17 +94,15 @@
             </swiper-slide>
           </swiper>
           <div class="TitleLine">
-            <swiper :options="swiperOptionTop" class="gallery-cont" ref="swiperTop">
-              <swiper-slide><dt><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></dt></swiper-slide>
-              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/8fe0b7be33e5c19818f4ab0ae62310dd.png"></dt></swiper-slide>
-              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/4493a1385009b0e9effbd9287257b269.png"></dt></swiper-slide>
-              <swiper-slide ><dt><img src="http://yanxuan.nosdn.127.net/2bbfb3bf0a0b758fb950a351e22c3f01.png"></dt></swiper-slide>
-              <swiper-slide ><dt><img src="https://yanxuan.nosdn.127.net/15030393722652401.jpg"></dt></swiper-slide>
+            <swiper :options="swiperOptionCont" class="gallery-cont" ref="swiperCont">
+              <swiper-slide v-for="(item,index) in classList" v-bind:key="index+1"><dt class="swiper-zoom-container"><img :src="item.bgp"></dt></swiper-slide>
             </swiper>
         </div>
       </div>
-      <div class="background-blur fullscreen"></div>  
-    </div>  
+      <div class="fullscreen" style="-webkit-filter: blur(30px);filter: blur(30px);">
+        <div class="background-blur fullscreen" :class="{'back-active':backgroundBlur == index,'back-leave':backgroundBlur !=index}" v-for="(item,index) in classList" :style="{'background-image': 'url('+item.bgp+')'}"></div>  
+      </div>
+    </div>
 </template>
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -99,42 +111,44 @@
         name: 'classList',
         components: {Velocity,swiper, swiperSlide},
         data () {
+            let vm = this;
             return {
+                classList:[
+                  {title:'相簿',bgp:'https://yanxuan.nosdn.127.net/c646886fdf9abe1c69c4267380137ccc.jpg?imageView&quality=75',topics:[{title:'宁波',id:'001'},{title:'随拍',id:'002'},{title:'四季',id:'003'},{title:'画作',id:'004'}]},
+                  {title:'笔记',bgp:'https://yanxuan.nosdn.127.net/42a74ba5f1579e7f871ce293085c8b62.jpg?imageView&quality=75',topics:[{title:'宁波',id:'001'},{title:'矫情',id:'002'},{title:'大国',id:'003'},{title:'小家',id:'004'}]},
+                  {title:'小说',bgp:'https://yanxuan.nosdn.127.net/48f7fc275398b6cb48aa670e896f6dd6.jpg?imageView&quality=75',topics:[{title:'宁波',id:'001'},{title:'矫情',id:'002'},{title:'大国',id:'003'},{title:'小家',id:'004'}]},
+                  {title:'音乐',bgp:'https://yanxuan.nosdn.127.net/74373b06b38aa134e2df9f8d017370b6.jpg?imageView&quality=75',topics:[{title:'民谣',id:'001'},{title:'外语',id:'002'},{title:'轻音乐',id:'003'}]},
+                  {title:'戒子规',bgp:'https://yanxuan.nosdn.127.net/ce358fcee3a5eb9dba9bce277a7e9445.jpg?imageView&quality=75',topics:[{title:'大道篇',id:'001'},{title:'为人篇',id:'002'},{title:'处事篇',id:'003'}]},
+                ],
                 swiperOptionThumbs: {
                       slidesPerView: 'auto',
                       freeMode : true,
-                      notNextTick: true,
                       centeredSlides: true,
-                      slideToClickedSlide: true,
-                      notNextTick: true,
-                      onClick: function(swiper){
-                            
-                      }
                  },
-                 swiperOptionTop: {
+                 swiperOptionCont: {
                    spaceBetween: 10,
-                   notNextTick: true,
+                   zoom: true,
+                   onSlideChangeStart:function(swiper){
+                      vm.backgroundBlur = swiper.activeIndex;
+                      if (swiper.zoom.scale != 1) {
+                        swiper.zoom.toggleZoom(swiper)
+                      }
+                      
+                   }
                  },
-                 classList:[
-                    {title:'相簿',bgp:'https://yanxuan.nosdn.127.net/15030393722652401.jpg',topics:[{title:'宁波',id:'001'},{title:'随拍',id:'002'},{title:'四季',id:'003'},{title:'画作',id:'004'}]},
-                    {title:'笔记',bgp:'http://yanxuan.nosdn.127.net/8fe0b7be33e5c19818f4ab0ae62310dd.png',topics:[{title:'宁波',id:'001'},{title:'矫情',id:'002'},{title:'大国',id:'003'},{title:'小家',id:'004'}]},
-                    {title:'小说',bgp:'http://yanxuan.nosdn.127.net/4493a1385009b0e9effbd9287257b269.png',topics:[{title:'宁波',id:'001'},{title:'矫情',id:'002'},{title:'大国',id:'003'},{title:'小家',id:'004'}]},
-                    {title:'音乐',bgp:'http://yanxuan.nosdn.127.net/2bbfb3bf0a0b758fb950a351e22c3f01.png',topics:[{title:'民谣',id:'001'},{title:'外语',id:'002'},{title:'轻音乐',id:'003'}]},
-                    {title:'戒子规',bgp:'http://yanxuan.nosdn.127.net/2bbfb3bf0a0b758fb950a351e22c3f01.png',topics:[{title:'大道篇',id:'001'},{title:'为人篇',id:'002'},{title:'处事篇',id:'003'}]},
-                 ],
-                 
+                 backgroundBlur:0
             }
           },
           mounted(){
-            const swiperTop = this.$refs.swiperTop.swiper
-            const swiperThumbs = this.$refs.swiperThumbs.swiper
-            swiperTop.params.control = swiperThumbs
+            const vm = this;
+            const swiperCont = this.$refs.swiperCont.swiper;
+            const swiperThumbs = this.$refs.swiperThumbs.swiper;
+            swiperCont.params.control = swiperThumbs;
       
           },
           methods: { 
             changebox (index) {
-              console.log(1)
-              this.$refs.swiperTop.swiper.slideTo(index)
+              this.$refs.swiperCont.swiper.slideTo(index)
             }
           }
     }

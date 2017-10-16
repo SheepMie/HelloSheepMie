@@ -36,7 +36,6 @@
 .fade-leave-active{
   opacity: 0;
   transform: scale(0.85);
-  
 }
 .slide-fade-enter-active,.slide-fade-leave-active {
   transition: all .3s ease;
