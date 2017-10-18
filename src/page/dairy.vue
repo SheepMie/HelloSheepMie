@@ -82,7 +82,6 @@
 }
 .rotate1{
     transform: rotateY(-180deg);
-    
 }
 .rotate2{
     transform: rotateY(0) !important;

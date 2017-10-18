@@ -31,11 +31,13 @@
 .fade-enter{
   opacity: 1;
   transform: scale(1);
+  transition: all 0.3s ease;
 }
 /* 出去终点 */
 .fade-leave-active{
   opacity: 0;
   transform: scale(0.85);
+  transition: all 0.3s ease;
 }
 .slide-fade-enter-active,.slide-fade-leave-active {
   transition: all .3s ease;
@@ -61,7 +63,7 @@
 <template>
     <div class="fullscreen">
         <scroller>
-            <div class="pd3  fade-enter oflow" :class="{'fade-leave-active':isdairydetail}">
+            <div class="pd3 oflow" :class="{'fade-leave-active':isdairydetail,'fade-enter':!isdairydetail}">
                 <transition-group  appear  name="staggered-fade" v-bind:css="false" v-on:before-enter="beforeEnter"  v-on:enter="enter" v-on:leave="leave" >
                     <li v-for="(item,index) in scrollercont" class="fl" :class="[item.boxsize,item.float]" v-bind:key="index+1" v-bind:data-index="index" >
                         <ul class=" text-center" :style="{background: 'url('+item.bgp+')'}"  @click="lookdairy()" >{{item.cont}}<span class="ab weather_icon"><i class="iconfont" :class="'icon-'+item.weather"></i></span></ul>
@@ -91,17 +93,17 @@
                     {msg: 'Bruce Lee',boxsize:'bigbox',bgp:'http://img.zcool.cn/community/0049b959b21213a8012028a9b88016.jpg@260w_195h_1c_1e_1o_100sh.jpg',cont:'aiyaya',date:"17-6-23",weither:'snow',float:'fl',weather:'wu'}
                 ],
                 isdairydetail:false,
-                isdairyshow:false
+                //isdairyshow:false
             }
           },
         watch:{
             $route(to, from){
-                let vm = this;
-                if(this.isdairydetail&&from.name == 'dairy'){
-                        vm.isdairydetail = false
-                    
-                }
-                 
+              let vm = this;
+
+              if(this.isdairydetail&&from.name == 'dairy'){
+                console.log(from.name)
+                vm.isdairydetail = false
+              }
             }
         },
         methods: { 
@@ -118,8 +120,8 @@
             lookdairy (){
                 var vm = this;
                 vm.isdairydetail = true;
-                    vm.isdairyshow = true;
-                    vm.$router.push('/dairylist/dairy')
+                //vm.isdairyshow = true;
+                vm.$router.push('/dairylist/dairy')
             },
             beforeEnter (el) {
                 el.style.opacity = 0;
