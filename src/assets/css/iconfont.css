@@ -73,8 +73,6 @@
 
 .icon-fenxiangjiantou:before { content: "\e850"; }
 
-.icon-pinglun:before { content: "\e679"; }
-
 .icon-yang:before { content: "\e614"; }
 
 .icon-yangmaoriji:before { content: "\e646"; }
@@ -92,6 +90,10 @@
 .icon-zhenyu:before { content: "\e60c"; }
 
 .icon-zhongyu:before { content: "\e60d"; }
+
+.icon-pinglun:before { content: "\e631"; }
+
+.icon-pinglun2:before { content: "\e643"; }
 
 .icon-leizhenyu:before { content: "\e60e"; }
 
@@ -130,6 +132,10 @@
 .icon-laba:before { content: "\e61e"; }
 
 .icon-laba1:before { content: "\e61f"; }
+
+.icon-dizhi:before { content: "\e660"; }
+
+.icon-shizhong:before { content: "\e627"; }
 
 .h3_icon {
     font-size: 22px;
