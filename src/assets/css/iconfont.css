@@ -135,7 +135,17 @@
 
 .icon-dizhi:before { content: "\e660"; }
 
-.icon-shizhong:before { content: "\e627"; }
+.icon-shizhong:before { content: "\e620"; }
+
+.icon-zan:before { content: "\e66f"; }
+
+.icon-question:before { content: "\e61f"; }
+
+.icon-answer:before { content: "\e621"; }
+
+.icon-email:before { content: "\e62e"; }
+
+.icon-github:before { content: "\e6ed"; }
 
 .h3_icon {
     font-size: 22px;
