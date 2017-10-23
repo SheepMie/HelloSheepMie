@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .form-box-mask{
     padding-top: 60px;
     position: fixed;
@@ -131,41 +131,45 @@
     position: absolute;
     top: 0;
 }
-
-.mint-swipe {
-    height: 100%;
-    overflow:inherit;
+.form-ft{overflow: hidden;}
+.swiper-container{
+  height: 100%;
+  overflow: inherit
 }
-.mint-swipe-item:first-child{
+.swiper-wrapper {
+    height: 100%;
+}
+.emoji1{
     background:url('../assets/img/1@2x.png');
 }
-.mint-swipe-item:nth-child(2){
+.emoji2{
     background:url('../assets/img/2.png');
 }
-.mint-swipe-item:nth-child(3){
+.emoji3{
     background:url('../assets/img/3.png');
 }
-.mint-swipe-item:nth-child(4){
+.emoji4{
     background:url('../assets/img/4.png');
 }
-.mint-swipe-item:nth-child(5){
+.emoji5{
     background:url('../assets/img/5.png');
 }
-.mint-swipe-item {
+.swiper-slide {
+    width: 100%;
+    overflow: hidden;
     background-position: center;
     background-repeat: no-repeat !important;
     background-size: 100% !important;
-    flex: 1;
 }
 .mint-swipe-indicator.is-active {
     background: #2d8ae7;
     opacity: 1
 }
-.mint-swipe-indicators{
-    bottom: -15px;
+.swiper-pagination{
+    bottom:-10px;
 }
 
-.emoji-mod .select-area .mint-swipe-item .emoji-item {
+.emoji-mod .select-area .swiper-slide .emoji-item {
     width: 14.2858%;
     padding-top: 14.2858%;
     float: left;
@@ -203,8 +207,8 @@
                 <div data-textmod="emoji" class="emoji-mod">
                     <div class="select-area">
                         <ul>
-                            <mt-swipe :auto="0">
-                                <mt-swipe-item>
+                            <swiper :options="swiperOption">
+                                <swiper-slide class="emoji1">
                                      <button class="emoji-item" data-emoji="100" title="微笑"></button>
                                      <button class="emoji-item" data-emoji="101" title="撇嘴"></button>
                                      <button class="emoji-item" data-emoji="102" title="色"></button>
@@ -226,9 +230,9 @@
                                      <button class="emoji-item" data-emoji="118" title="抓狂"></button>
                                      <button class="emoji-item" data-emoji="119" title="吐"></button>
                                      <button class="emoji-item" data-oper="delete" title="删除"></button>
-                                </mt-swipe-item>
+                                </swiper-slide>
 
-                                <mt-swipe-item>
+                                <swiper-slide class="emoji2">
                                      <button class="emoji-item" data-emoji="120" title="偷笑"></button>
                                      <button class="emoji-item" data-emoji="121" title="可爱"></button>
                                      <button class="emoji-item" data-emoji="122" title="白眼"></button>
@@ -250,8 +254,8 @@
                                      <button class="emoji-item" data-emoji="138" title="敲打"></button>
                                      <button class="emoji-item" data-emoji="139" title="再见"></button>
                                      <button class="emoji-item" data-oper="delete" title="删除"></button>
-                                </mt-swipe-item>
-                                <mt-swipe-item>
+                                </swiper-slide>
+                                <swiper-slide class="emoji3">
                                     <button class="emoji-item" data-emoji="140" title="擦汗"></button>
                                     <button class="emoji-item" data-emoji="141" title="抠鼻"></button>
                                     <button class="emoji-item" data-emoji="142" title="鼓掌"></button>
@@ -273,8 +277,8 @@
                                     <button class="emoji-item" data-emoji="158" title="篮球"></button>
                                     <button class="emoji-item" data-emoji="159" title="乒乓"></button>
                                     <button class="emoji-item" data-oper="delete" title="删除"></button>
-                                </mt-swipe-item>
-                                <mt-swipe-item>
+                                </swiper-slide>
+                                <swiper-slide class="emoji4">
                                     <button class="emoji-item" data-emoji="160" title="咖啡"></button>
                                     <button class="emoji-item" data-emoji="161" title="饭"></button>
                                     <button class="emoji-item" data-emoji="162" title="猪头"></button>
@@ -296,8 +300,8 @@
                                     <button class="emoji-item" data-emoji="178" title="拥抱"></button>
                                     <button class="emoji-item" data-emoji="179" title="强"></button>
                                     <button class="emoji-item" data-oper="delete" title="删除"></button>
-                                </mt-swipe-item>
-                                <mt-swipe-item>
+                                </swiper-slide>
+                                <swiper-slide class="emoji5">
                                     <button class="emoji-item" data-emoji="180" title="弱"></button>
                                     <button class="emoji-item" data-emoji="181" title="握手"></button>
                                     <button class="emoji-item" data-emoji="182" title="胜利"></button>
@@ -319,8 +323,9 @@
                                     <button class="emoji-item" data-emoji="198" title="跳绳"></button>
                                     <button class="emoji-item" data-emoji="199" title="挥手"></button>
                                     <button class="emoji-item" data-oper="delete" title="删除"></button> 
-                                </mt-swipe-item>
-                            </mt-swipe>
+                                </swiper-slide>
+                                <div class="swiper-pagination" slot="pagination"></div>
+                            </swiper>
                         </ul>
                     </div>
                     
@@ -335,16 +340,22 @@
 
 <script>
     import store from '@/store/index';
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
     export default {
         name: 'sheep-replybox',
+        components: {swiper, swiperSlide},
         store,
         data () {
             return {
-                useQQIcon:false
+                useQQIcon:false,
+                swiperOption: {
+                  pagination: '.swiper-pagination',
+                  slidesPerView: 1,
+                  paginationClickable: true,
+                  spaceBetween: 10,
+                  loop: true
+                }
             }
-        },
-        watch:{
-            
         },
         methods: { 
             

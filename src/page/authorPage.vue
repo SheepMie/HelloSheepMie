@@ -1,12 +1,19 @@
-<style>
+<style scoped>
     .authorflow{background:#eee;}
-    .authorback{
+    .authorback_header{
         width:100%;
         background-image:url('https://yanxuan.nosdn.127.net/c646886fdf9abe1c69c4267380137ccc.jpg?imageView&quality=75') ;
         height: 200px;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+    }
+    .authorback_footer{
+        position: fixed;
+        width:100%;
+        height: 100%;
+        background:rgba(0,0,0,0.5);
+        top:0;
     }
     .author_cont_box{
         padding-top: 150px;
@@ -141,12 +148,16 @@
     .author_about p{color:#000;}
     .dairy_state{display: block;line-height: 30px;text-align: center;font-size: 12px;color:#999;}
     .author_about p.answer{color:#428bca;}
+   
 
-    .slide{background:rgba(0,0,0,0.5)}
+    .back-blur{
+        -webkit-filter: blur(30px);
+        filter: blur(30px);
+    }
 </style>
 <template>
     <div class="fullscreen authorflow">
-        <div class="authorback" :style="'transform: scale('+(1+y)+')'"></div>
+        <div class="authorback_header" :style="'transform: scale('+(1+y)+')'"></div>
         <scroller ref="my_scroller" >
             <div class="author_cont_box">
                 <div class="author_cont">
@@ -157,11 +168,11 @@
                             <h5><span>“</span> 听风便是雨 <span>”</span></h5>
                             <p class="dizhi"><i class="iconfont icon-dizhi"></i>宁波市</p>
                             <div class="author_nav">
-                                <router-link  to="/authorPage/message"><li><span>999+</span>留言</li></router-link>
+                                <router-link  to="/message"><li><span>999+</span>留言</li></router-link>
                                 <li><span>102</span>讨论板</li>
                                 <li><span>99</span>日记</li>
                                 <li><span>20</span>回忆录</li>
-                            </div>
+                            </div>0
                         </ul>
                         <ul class="author_dairy">
                             <li>
@@ -232,19 +243,24 @@
                 </div>
             </div>
         </scroller>
-        <transition>
-            <router-view></router-view>
-        </transition>
+        <div :class="{'authorback_footer':backblur}">
+            <transition>
+                <router-view></router-view>
+            </transition>
+        </div>
+        
     </div>
 </template>
 
 <script>
+
 export default {
     name:'index',
     data(){
         return {
             y: 0,
-            timer: 0
+            timer: 0,
+            backblur:false
         }
     },
     mounted () {
@@ -258,6 +274,19 @@ export default {
     },
     beforeDestroy() {
       clearInterval(this.timer)
+    },
+    watch:{
+        $route(to, from){
+          let vm = this;
+          if(this.backblur&&from.name == 'message'){
+            vm.backblur = false
+          }
+        }
+    },
+    methods:{
+        message(){
+            this.backblur = true;
+        }
     }
 }
 </script>

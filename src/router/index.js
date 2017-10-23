@@ -37,7 +37,6 @@ export default new Router({
       name: 'authorPage',
       component: authorPage,
       children:[
-        {path:'message',name:'message',component:dairy}
       ]
     }
   ]
