@@ -172,7 +172,7 @@
                                 <li><span>102</span>讨论板</li>
                                 <li><span>99</span>日记</li>
                                 <li><span>20</span>回忆录</li>
-                            </div>0
+                            </div>
                         </ul>
                         <ul class="author_dairy">
                             <li>
