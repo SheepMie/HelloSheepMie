@@ -79,6 +79,7 @@
 
 <script>
     import Velocity from 'velocity-animate';
+    import { mapGetters ,mapActions } from 'vuex'
     export default {
         name: 'dairylist',
         components: {Velocity},
@@ -106,6 +107,11 @@
               }
             }
         },
+        computed: {
+            ...mapGetters({
+                getArticleList: 'getArticleList',
+            }),
+          },
         methods: { 
             add (){
                 this.scrollercont.push(

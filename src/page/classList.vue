@@ -134,11 +134,13 @@
                  backgroundBlur:0,
             }
           },
+          
           mounted(){
             const vm = this;
             const swiperCont = this.$refs.swiperCont.swiper;
             const swiperThumbs = this.$refs.swiperThumbs.swiper;
             swiperCont.params.control = swiperThumbs;
+            this.$store.dispatch('getArticleList',this.aid);
           },
           methods: { 
             changebox (index) {
